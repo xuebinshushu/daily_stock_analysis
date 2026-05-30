@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
           
       - name: 同步上游仓库
-        uses: wei/git-sync
+        uses: wei/git-sync@v3
         with:
           upstream_repository:  ZhuLinsen/daily_stock_analysis
           target: main
