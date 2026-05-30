@@ -1,0 +1,23 @@
+name: 自动同步上游 Fork
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: 同步上游仓库
+        uses: aormsby/fork-sync@v2
+        with:
+          upstream_repository:  ZhuLinsen/daily_stock_analysis
+          target: main
+          merge_method: fast-forward
